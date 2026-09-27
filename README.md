@@ -22,7 +22,21 @@ Bridge <your bridge>
 6. ```openssl genrsa -out server.key 2048``` <<< generate a 2048-bit RSA private key.
 7. ```openssl req -new -x509 -key server.key -out server.crt \ -days 365 -subj "/C=US/ST=Test/L=Local/O=DevOrg/OU=Dev/CN=localhost"```<<< creating self-signed certificate for our server
 8. In src/server/tor.c change "PUT PASSWORD HERE" to actual password from your Tor ControlPanel so server code can use it and generate .onion address.
-9. Build whole code by command ```make launcher```.
+(should look similar to this one):
+```
+...
+char *create_onion_address() {
+
+        struct sockaddr_in con;
+        memset(&con , 0 , sizeof(con));
+        char *auth = "AUTHENTICATE \"test\" \r\n";
+        char buffer[512];
+        char *signal = "ADD_ONION NEW:ED25519-V3 Flags=Detach Port=80,127.0.0.1:8080\r\n";
+        char *onion = calloc(64 , sizeof(char));
+
+...
+```
+10. Build whole code by command ```make launcher```.
 
 ####Usage
 1. Run ```./launcher```
