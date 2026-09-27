@@ -38,14 +38,22 @@ char *create_onion_address() {
 ```
 10. Build whole code by command ```make launcher```.
 
-####Usage
+#### Usage
 1. Run ```./launcher```
 2. Write username and password.
 3. Now you have two options:
+
 [1] - Create server. <-will create .onion address and your device will turn into chatroom server. The client will need .onion address to connect to your chatroom.
+
 [2] - Connect to server. <-you need to put .onion address here to connect to the chatroom.
->>>After connection you can type text to others in chatroom and also use commands:
+
+<<< After connection you can type text to others in chatroom and also use commands:
+
 (Hint : all commands start by '/'. If you type command without slash it'll be ignored):
+```
 /exit - sends to server an EXIT ask then disconnects client from server.
+
 /file <filename> - sends file to others in chatroom <WIP>.
+
 /sticker <stickername> - sends big sticker in chat <WIP>.
+```
